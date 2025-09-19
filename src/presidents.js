@@ -453,6 +453,7 @@ function sortPresidentsByBirthYear(presidentsArr) {
 function getAgeAtInauguration(presidentsArr) {
 	return presidentsArr.map((p) => {
 		let ageAtInauguration = {
+			...p,
 			ageAtInauguration: p.tookOffice - p.birthYear,
 		}
 		return ageAtInauguration
@@ -462,10 +463,9 @@ console.log(getAgeAtInauguration(presidents))
 
 // Bonus: Iteration 6 | Presidents Born After - `filter()`
 function getPresidentsBornAfter(presidentsArr, year) {
-	let presidents = presidentsArr.filter((p) => p.birthYear < year)
-	return presidents
+	return presidentsArr.filter((p) => p.birthYear > year)
 }
-console.log(getPresidentsBornAfter(presidents))
+console.log(getPresidentsBornAfter(presidents, 1940))
 
 // Bonus: Iteration 7 | Count Republican Presidents
 function countRepublicanPresidents(presidentsArr) {
@@ -481,6 +481,6 @@ console.log(countRepublicanPresidents(presidents))
 
 // Bonus: Iteration 8 | Sort Presidents by Name - `sort()`
 function sortPresidentsByName(presidentsArr) {
-	return presidentsArr.sort((a, b) => a.name - b.name)
+	return presidentsArr.sort((a, b) => a.name.localeCompare(b.name))
 }
 console.log(sortPresidentsByName(presidents))
